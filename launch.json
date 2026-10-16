@@ -1,0 +1,24 @@
+{
+  "kind": "custom_token",
+  "token": {
+    "contract": "WorldMarketToken",
+    "name": "World Market Token",
+    "symbol": "WORLD",
+    "decimals": 18,
+    "constructorArgs": [],
+    "totalSupply": "1000000000000000000000000000"
+  },
+  "contracts": [],
+  "pool": {
+    "pairedCurrency": "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7",
+    "fee": 12500,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "economics": {
+    "poolBps": 8000,
+    "initialMarketCapWei": "3600000000000000000000",
+    "remainderTo": "0x5440356760c390720d32992f58d0a4b31ce8c85c"
+  },
+  "notes": "WorldMarketToken (src/WorldMarketToken.sol) is a plain fixed-supply ERC-20 built on the vendored OpenZeppelin Contracts v5.0.2 implementation. Its constructor takes no arguments and mints the whole supply of 1,000,000,000 WORLD (10^27 minor units at 18 decimals) once to msg.sender, which under ProjectFactory.launchCustom is the factory. There is no owner, minter, pauser, blacklist, fee, burn-on-transfer, rebase, upgrade path or external call: transfers always move exactly the requested amount, so the factory's transfer to the MerkleDistributor, the single-sided seed through the PoolManager, claims and swaps all arrive whole. Nothing can mint after construction. No application contracts are part of this launch, so contracts is empty and there are no initialization calls. The pool pairs with IMD at 0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7 at the launch policy's 1.25% fee and tick spacing 60; initialPrice is provenance only, the deployer derives the opening price from economics.initialMarketCapWei (3,600 IMD for the whole supply) and totalSupply. Economics are the requester's: 80% of the supply seeds the pool and the rest of the requester's share goes to 0x5440356760c390720d32992f58d0a4b31ce8c85c."
+}
